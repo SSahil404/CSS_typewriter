@@ -1,0 +1,67 @@
+:root {
+    --background-clr: whitesmoke;
+    --typewriter-speed: 6s;
+    --typewriter-characters: 19;
+}
+
+body {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    background: var(--background-clr);
+}
+h1 {
+    font-size: 3rem;
+    position: relative;
+    font-family: "Source Code Pro", monospace;
+    width: max-content;
+}
+
+h1::before,
+h1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+h1::before {
+    background: var(--background-clr);
+    animation: typewriter var(--typewriter-speed) steps(var(--typewriter-characters)) 750ms forwards;
+}
+h1::after {
+    width: 0.075em;
+    background: black;
+    animation: typewriter var(--typewriter-speed) steps(var(--typewriter-characters)) 750ms forwards,
+        blink 750ms steps(24) infinite;
+}
+
+.subtitle {
+    color: #333;
+    font-size: 2rem;
+    opacity: 0;
+    transform: translateY(3rem);
+    animation: fadeIn 1s ease calc(var(--typewriter-speed) + 1s) forwards;
+}
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+@keyframes typewriter {
+    to {
+        left: 100%;
+    }
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
